@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
 
-    "build": "ng build && npm run copy:hosting && npm run build:ssr && npm run build:functions",
+    "build": "ng build --prod && npm run copy:hosting && npm run build:ssr && npm run build:functions",
     "copy:hosting": "cp -r ./dist/course-champion/* ./public && rm ./public/index.html",
     "build:functions": "npm run --prefix functions build",
     "build:ssr": "ng run course-champion:server && npm run webpack:ssr",
