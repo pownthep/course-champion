@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="items" *ngFor="let item of items | async" style="text-align: center;">
+      <img src="../assets/pdf.svg" alt="" style="width: 100px; height: 250px; display: block;
+      margin-left: auto;
+      margin-right: auto;">
+      <div class="project-name">
+        <p>{{item.name}}</p>
+      </div>
+    </div>   
+</div>
