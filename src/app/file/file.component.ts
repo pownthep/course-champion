@@ -15,7 +15,7 @@ export class FileComponent implements OnInit {
   public src: string;
   
   constructor(public db: AngularFirestore) {
-    this.items = db.collection('files', ref => ref.limit(4)).valueChanges()
+    this.items = db.collection('assignments', ref => ref.limit(4)).valueChanges()
   }
 
   ngOnInit() {
@@ -24,10 +24,10 @@ export class FileComponent implements OnInit {
   subjectSearch(subject: string) {
     this.selected = false;
     if(subject.length == 0) {
-      this.items = this.db.collection('files', ref => ref.limit(4)).valueChanges();
+      this.items = this.db.collection('assignments', ref => ref.limit(4)).valueChanges();
     } 
     else {
-      this.items = this.db.collection('files', ref => ref.orderBy('name')
+      this.items = this.db.collection('assignments', ref => ref.orderBy('name')
       .startAt(subject)
       .endAt(subject+"\uf8ff")).valueChanges();
     }
