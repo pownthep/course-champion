@@ -24,5 +24,7 @@ export class CourseChampionComponent implements OnInit {
     this.fileComponent.subjectSearch(value);
     //console.log(value);
   }
-  
+  home() {
+    this.fileComponent.toggle();
+  }
 }

@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="items" *ngFor="let item of items | async" style="text-align: center;">
+<div class="container" *ngIf="!selected">
+    <div class="items" *ngFor="let item of items | async" style="text-align: center;" (click)="show(item.downloadURL, item.name)">
       <img src="../assets/pdf.svg" alt="" style="width: 100px; height: 250px; display: block;
       margin-left: auto;
       margin-right: auto;">
@@ -7,4 +7,10 @@
         <p>{{item.name}}</p>
       </div>
     </div>   
+</div>
+<div *ngIf="selected" style="height: 75vh; overflow: auto; background-color: rgb(224, 224, 224); width: 80vw; border-radius: 10px;
+-moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc; padding-top: 20px;">
+  <pdf-viewer [src]="src" [show-all]="true" [page]="1" [render-text]="false"></pdf-viewer>
 </div>
