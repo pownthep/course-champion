@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms'
 })
 export class CourseChampionComponent implements OnInit {
   @ViewChild(FileComponent) private fileComponent: FileComponent;
-  
+  public placeholder = "Search course";
   public subject = "";
 
   constructor() {
@@ -27,4 +27,5 @@ export class CourseChampionComponent implements OnInit {
   home() {
     this.fileComponent.toggle();
   }
+
 }

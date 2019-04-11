@@ -2,8 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,12 +13,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { CourseChampionComponent } from './course-champion/course-champion.component';
 import { FileComponent } from './file/file.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseChampionComponent,
-    FileComponent
+    FileComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -31,9 +31,6 @@ import { FileComponent } from './file/file.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-
-    //Pdf-viwer
-    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
