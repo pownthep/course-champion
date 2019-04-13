@@ -13,7 +13,7 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      { "source": "**", "function": "universal" }
+      { "source": "**", "destination": "index.html" }
     ]
   }
 }

@@ -12,7 +12,9 @@
     "build:functions": "npm run --prefix functions build",
     "build:ssr": "ng run course-champion:server && npm run webpack:ssr",
     "webpack:ssr": "webpack --config webpack.server.config.js",
-    "serve:ssr": "node dist/course-champion-webpack/server.js"
+    "serve:ssr": "node dist/course-champion-webpack/server.js",
+    "build2": "ng build --prod && npm run copy:hosting && npm run build:functions && npm run prerender:ssr",
+    "prerender:ssr": "node dist/course-champion-webpack/server.js"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "mkdir-recursive": "^0.4.0",
     "protractor": "~5.4.0",
     "ts-loader": "^5.3.3",
     "ts-node": "~7.0.0",

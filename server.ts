@@ -47,9 +47,44 @@ app.get('*', (req, res) => {
 });
 
 // If we're not in the Cloud Functions environment, spin up a Node server
-if (!process.env.FUNCTION_NAME) {
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`Node server listening on http://localhost:${PORT}`);
-  });
+// if (!process.env.FUNCTION_NAME) {
+//   const PORT = process.env.PORT || 4000;
+//   app.listen(PORT, () => {
+//     console.log(`Node server listening on http://localhost:${PORT}`);
+//   });
+// }
+import { writeFileSync, existsSync } from 'fs';
+import { renderModuleFactory } from '@angular/platform-server';
+import { mkdirSync } from 'mkdir-recursive';
+
+if (true) {
+
+    const routes = require('./static.paths').default;
+    Promise.all(
+        routes.map(route =>
+            renderModuleFactory(AppServerModuleNgFactory, {
+                document: template,
+                url: route,
+                extraProviders: [
+                    provideModuleMap(LAZY_MODULE_MAP)
+                ]
+            }).then(html => [route, html])
+        )
+    ).then(results => {
+        results.forEach(([route, html]) => {
+            const fullPath = join('./public', route);
+            if (!existsSync(fullPath)) { mkdirSync(fullPath); }
+            writeFileSync(join(fullPath, 'index.html'), html);
+            console.log("Hello");
+        });
+        process.exit();
+    });
+
+} else if (!process.env.FUNCTION_NAME) {
+
+    // If we're not in the Cloud Functions environment, spin up a Node server
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+        console.log(`Node server listening on http://localhost:${PORT}`);
+    });
 }

@@ -16,7 +16,7 @@ export class FileComponent implements OnInit {
   public files:string[] = [];
   
   constructor(private readonly afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<any>('assignments');
+    this.itemsCollection = afs.collection<any>('assignments', ref => ref.limit(4));
     this.items = this.itemsCollection.valueChanges();
     this.items.subscribe(() => this.showLoading = false);
   }

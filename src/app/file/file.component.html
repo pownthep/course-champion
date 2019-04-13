@@ -1,5 +1,5 @@
 <div class="container" *ngIf="!selected">
-  <div class="items" *ngFor="let item of items | async" style="text-align: center;" (click)="show(item.name, item.file_url)">
+  <div class="items" *ngFor="let item of items | async" style="text-align: center;" (click)="show(item.name, item.files)">
     <img src="../assets/office-material.svg" alt="" style="width: 100px; height: 250px; display: block;
     margin-left: auto;
     margin-right: auto;">

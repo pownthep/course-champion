@@ -4,8 +4,7 @@ import { CourseChampionComponent } from './course-champion/course-champion.compo
 import { FileComponent } from './file/file.component';
 
 const routes: Routes = [
-  {path: '', component: CourseChampionComponent, data: {depth: 1}},
-  {path: 'file', component: FileComponent, data: {depth: 2}},
+  {path: '', component: CourseChampionComponent, data: {depth: 1}}
 
 ];
 
